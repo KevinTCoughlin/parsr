@@ -14,6 +14,8 @@ var server = restify.createServer({
 server.use(restify.acceptParser(server.acceptable));
 server.use(restify.queryParser());
 server.use(restify.bodyParser());
+server.use(restify.CORS());
+server.use(restify.fullResponse());
 
 server.get('/parse', function (req, res, next) {
     var url = req.params.url;
