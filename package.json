@@ -1,0 +1,22 @@
+{
+  "name": "rss-parser",
+  "version": "0.0.1",
+  "description": "Transforms any valid RSS parser to JSON",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "rss",
+    "parser",
+    "json",
+    "xml"
+  ],
+  "author": "Kevin T. Coughlin",
+  "license": "MIT",
+  "dependencies": {
+    "feedparser": "^0.19.2",
+    "request": "^2.42.0",
+    "restify": "^2.8.2"
+  }
+}
