@@ -1,11 +1,9 @@
 {
-  "name": "rss-parser",
-  "version": "0.0.1",
-  "description": "Transforms any valid RSS parser to JSON",
+  "name": "parsr",
+  "version": "0.9.0",
+  "description": "API that transforms valid RSS feeds into JSON",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "keywords": [
     "rss",
     "parser",
@@ -20,6 +18,6 @@
     "restify": "^2.8.2"
   },
   "engines": {
-    "node": ">= 0.10.31"
+    "node": "0.10.x"
   }
 }
