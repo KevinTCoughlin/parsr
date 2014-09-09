@@ -7,8 +7,8 @@ var FeedParser  = require('feedparser');
 
 var port = process.env.PORT || 5000;
 var server = restify.createServer({
-    name: 'rss-parser',
-    version: '1.0.0'
+    name: 'parsr',
+    version: '0.9.0'
 });
 
 server.use(restify.acceptParser(server.acceptable));
