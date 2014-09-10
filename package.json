@@ -12,14 +12,16 @@
   ],
   "author": "Kevin T. Coughlin",
   "license": "MIT",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/KevinTCoughlin/parsr.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KevinTCoughlin/parsr.git"
   },
   "dependencies": {
     "feedparser": "^0.19.2",
     "request": "^2.42.0",
-    "restify": "^2.8.2"
+    "restify": "^2.8.2",
+    "redis": "^0.12.1",
+    "q": "^1.0.1"
   },
   "engines": {
     "node": "0.10.x"
