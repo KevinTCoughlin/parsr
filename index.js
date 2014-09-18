@@ -14,7 +14,7 @@ var TTL         = 1800;
 var port = process.env.PORT || 5000;
 var server = restify.createServer({
     name: 'parsr',
-    version: '0.9.0'
+    version: '0.9.1'
 });
 
 server.use(restify.acceptParser(server.acceptable));
@@ -23,7 +23,6 @@ server.use(restify.bodyParser());
 server.use(restify.CORS());
 server.use(restify.fullResponse());
 
-// Auth to redis
 var redisURL = url.parse(process.env.REDISCLOUD_URL);
 var client = redis.createClient(redisURL.port, redisURL.hostname, { no_ready_check: true });
 client.auth(redisURL.auth.split(':')[1]);
@@ -33,14 +32,12 @@ server.get('/parse', function (req, res, next) {
     var key = crypto.createHash('md5').update(url).digest('hex');
     var items = [];
 
-    // First check if cached in redis
+    // Check if cached in redis
     checkRedis(key)
         .then(function(data) {
-            // Cache hit, send data
             res.send(JSON.parse(data));
         })
         .fail(function() {
-            // Cache miss, request, parse, and send data
             request(url).pipe(new FeedParser())
                 .on('error', function(error) {
                     next(error);
@@ -52,7 +49,6 @@ server.get('/parse', function (req, res, next) {
                     }
                 })
                 .on('end', function() {
-                    console.log('redis', 'setex', TTL, key);
                     client.setex(key, TTL, JSON.stringify(items));
                     res.send(items);
                 });
